@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dra2mtgp8a71a"]
+
+[ext_resource type="PackedScene" uid="uid://c71j633ceun18" path="res://Soldier.tscn" id="1_1o2hw"]
+[ext_resource type="PackedScene" uid="uid://djocwmnbsu37b" path="res://UI.tscn" id="1_c7suu"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_tkmhl"]
+size = Vector2(5, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5jk54"]
+albedo_color = Color(0.447059, 0.447059, 0.447059, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_t3lhu"]
+size = Vector3(5, 0.5, 5)
+
+[sub_resource type="Environment" id="Environment_5uved"]
+background_mode = 1
+background_color = Color(0.101961, 0.231373, 0.290196, 1)
+ambient_light_source = 2
+ambient_light_color = Color(0.196078, 0.568627, 0.54902, 1)
+
+[node name="World" type="Node"]
+
+[node name="UI" parent="." instance=ExtResource("1_c7suu")]
+
+[node name="Soldier" parent="." groups=["enemy"] instance=ExtResource("1_1o2hw")]
+
+[node name="Ground" type="StaticBody3D" parent="."]
+
+[node name="GroundMesh" type="MeshInstance3D" parent="Ground"]
+mesh = SubResource("PlaneMesh_tkmhl")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("StandardMaterial3D_5jk54")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Ground"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+shape = SubResource("BoxShape3D_t3lhu")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.80799, -0.158447, 0.567492, 0, 0.963163, 0.26892, -0.589196, -0.217285, 0.778226, 1.827, 1.773, 2.668)
+current = true
+fov = 50.0
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.92785, -0.194301, 0.318342, 0, 0.85357, 0.520978, -0.372954, -0.48339, 0.791985, 0.819092, 2.92209, 3.28783)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5uved")

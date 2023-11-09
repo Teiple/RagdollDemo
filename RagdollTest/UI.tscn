@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://djocwmnbsu37b"]
+
+[ext_resource type="Script" path="res://UI.gd" id="1_i4wij"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yk4g6"]
+bg_color = Color(0.223529, 0.223529, 0.223529, 0.705882)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i4wij")
+
+[node name="Hint" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 48.0
+offset_top = 17.0
+offset_right = 325.0
+offset_bottom = 67.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_yk4g6")
+text = "Press \"Enter\" to change to ragdoll"
+horizontal_alignment = 1
+vertical_alignment = 1
